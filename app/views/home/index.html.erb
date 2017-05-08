@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class ="container" style ="margin-top:30px;">
+             <form action="/write" method="post">
+                <h1>ASK - 질문해주세요</h1>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">질문: </label>
+                    <textarea class = "form-control" name="content" rows="3"></textarea> 
+                </div>
+                <button type="submit" class="btn btn-default">물어보기</button>
+            </form>    
+        </div>
+    </form>
+    <div style="padding-left: 200px; margin-right: 200px; margin-top: 30px">
+        <div style="background-color : #F5E2E4">
+            
+            <% @posts.each do |p| %>
+            <%= p.name %><br>
+            content : <%= p.content %><br>
+            <div style="margin-top: 10px; text-align: right; padding-right: 50px">
+                <a href="/update/<%=p.id%>">수정</a>
+                <a href="/destroy/<%=p.id%>">삭제</a>
+            </div>
+            <hr>
+            <% end %>
+        </div>
+    </div>
+</html>
